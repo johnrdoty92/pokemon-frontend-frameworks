@@ -1,0 +1,24 @@
+main {
+  min-width: 50vw;
+}
+
+.gameWindow {
+  outline: 3px solid green;
+  outline-offset: 5px;
+  min-height: 200px;
+}
+
+.player {
+  outline: 3px solid aqua;
+  min-height: 200px;
+}
+
+.opponent {
+  outline: 3px solid red;
+  min-height: 200px;
+}
+
+.controls {
+  outline: 3px solid purple;
+  min-height: 200px;
+}
