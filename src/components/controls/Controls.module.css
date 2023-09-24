@@ -1,0 +1,14 @@
+.selectPokemonGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.selectButton {
+    flex: 1 1 calc(50% - 1em);
+}
+
+.refreshButton {
+    margin-top: 1rem;
+    width: 100%;
+}
