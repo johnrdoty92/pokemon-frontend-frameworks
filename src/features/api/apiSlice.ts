@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Move, Pokemon } from "./responseTypes";
 
-const baseUrl = "https://pokeapi.co/api/v2";
-
 export const apiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2" }),
   endpoints: (builder) => ({
     getPokemon: builder.query<Pokemon, { id: string }>({
       query: ({ id }) => `/pokemon/${id}`,

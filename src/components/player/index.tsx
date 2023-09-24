@@ -14,7 +14,7 @@ export const Player = () => {
       <section className={classes.playerWindow}>
         <img src={pokemon.sprites.back_default} alt={pokemon.name} />;
         <Stats
-          name="mudkip"
+          name={pokemon.name}
           currentHealth={10}
           totalHealth={totalHealth ?? 1}
         />
