@@ -1,15 +1,13 @@
-import { PlayerSprite } from "components/player/playerSprite";
 import classes from "./App.module.css";
 import { Controls } from "components/controls";
+import { Player } from "components/player";
 
 function App() {
   return (
     <main>
       <section className={classes.gameWindow}>
         <div className={classes.opponent}></div>
-        <div className={classes.player}>
-          <PlayerSprite />
-        </div>
+        <Player />
       </section>
       <section className={classes.controls}>
         <Controls />

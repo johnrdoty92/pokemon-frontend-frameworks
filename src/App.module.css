@@ -6,12 +6,10 @@ main {
   outline: 3px solid green;
   outline-offset: 5px;
   min-height: 200px;
+  background: rgb(234, 230, 207);
 }
 
-.player {
-  outline: 3px solid aqua;
-  min-height: 200px;
-}
+
 
 .opponent {
   outline: 3px solid red;

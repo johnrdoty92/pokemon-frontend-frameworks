@@ -7,6 +7,7 @@ import { Pokemon } from "features/api/responseTypes";
 
 type PlayerState = {
   selectedPokemon: Pokemon | null;
+  health: number;
 };
 
 export const playerStateSlice = createSlice<
@@ -17,6 +18,7 @@ export const playerStateSlice = createSlice<
   name: "playerState",
   initialState: {
     selectedPokemon: null,
+    health: 0,
   },
   reducers: {
     selectPokemon: (state, action: PayloadAction<Pokemon>) => {
