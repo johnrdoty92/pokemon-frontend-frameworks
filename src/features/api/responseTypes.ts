@@ -1,7 +1,7 @@
 export type Pokemon = {
   id: number;
   name: string;
-  moves: unknown[];
+  moves: { move: { name: string; url: string } }[];
   sprites: {
     back_default: string;
     front_default: string;

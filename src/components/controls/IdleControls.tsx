@@ -1,7 +1,7 @@
 import { useAppDispatch } from "app/store";
 import { useGetPokemonQuery } from "features/api/apiSlice";
 import { battle } from "features/gameState/game";
-import { selectPokemon } from "features/gameState/player";
+import { setPlayer } from "features/gameState/players";
 import { useState } from "react";
 import classes from "./Controls.module.css";
 
@@ -14,7 +14,7 @@ const SelectPokemonButton = ({ id }: SelectPokemonButtonProps) => {
 
   const handleClick = () => {
     if (!pokemon) return;
-    dispatch(selectPokemon(pokemon));
+    dispatch(setPlayer(pokemon));
     dispatch(battle());
   };
 

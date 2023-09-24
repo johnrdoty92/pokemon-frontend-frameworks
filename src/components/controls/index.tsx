@@ -1,5 +1,6 @@
 import { useAppSelector } from "app/store";
 import { IdleControls } from "./IdleControls";
+import { BattleControls } from "./BattleControls";
 
 export const Controls = () => {
   const gameState = useAppSelector((state) => state.gameState);
@@ -9,7 +10,7 @@ export const Controls = () => {
       return <IdleControls />;
     }
     case "battle": {
-      return;
+      return <BattleControls />;
     }
     case "game-over": {
       return;

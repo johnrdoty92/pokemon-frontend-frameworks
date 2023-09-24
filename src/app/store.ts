@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { gameStateReducer } from "../features/gameState/game";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { apiSlice } from "features/api/apiSlice";
-import { playerStateReducer } from "features/gameState/player";
+import { playerStateReducer } from "features/gameState/players";
 
 const store = configureStore({
   reducer: {
