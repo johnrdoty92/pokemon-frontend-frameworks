@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { gameStateReducer } from "../features/gameState/game";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { apiSlice } from "features/api/apiSlice";
-import { playerStateReducer } from "features/gameState/players";
+import { gameStateReducer } from "features/gameState/gameState";
 
 const store = configureStore({
   reducer: {
     gameState: gameStateReducer,
-    playerState: playerStateReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware(getDefaultMiddleware) {

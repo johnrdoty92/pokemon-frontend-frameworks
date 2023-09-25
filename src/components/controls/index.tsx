@@ -1,13 +1,13 @@
 import { useAppSelector } from "app/store";
-import { IdleControls } from "./IdleControls";
+import { StartControls } from "./StartControls";
 import { BattleControls } from "./BattleControls";
 
 export const Controls = () => {
-  const gameState = useAppSelector((state) => state.gameState);
+  const mode = useAppSelector((state) => state.gameState.mode);
 
-  switch (gameState) {
-    case "idle": {
-      return <IdleControls />;
+  switch (mode) {
+    case "start-screen": {
+      return <StartControls />;
     }
     case "battle": {
       return <BattleControls />;

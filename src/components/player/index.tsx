@@ -3,15 +3,15 @@ import classes from "./Player.module.css";
 import { Stats } from "components/stats";
 
 export const Player = () => {
-  const pokemon = useAppSelector((state) => state.playerState.player);
-  const totalHealth = pokemon?.stats.find(({ stat }) => stat.name === "hp")?.base_stat;
-  if (!pokemon) {
+  const player = useAppSelector((state) => state.gameState.player);
+  if (!player) {
     return <p>Choose a Pokemon...</p>;
   } else {
+    const { currentHealth, totalHealth, name } = player;
     return (
       <section className={classes.playerWindow}>
-        <img src={pokemon.sprites.back_default} alt={pokemon.name} />;
-        <Stats name={pokemon.name} currentHealth={pokemon.health} totalHealth={totalHealth ?? 1} />
+        <img src={player.sprites.back_default} alt={name} />;
+        <Stats name={name} currentHealth={currentHealth} totalHealth={totalHealth} />
       </section>
     );
   }

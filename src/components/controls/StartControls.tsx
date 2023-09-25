@@ -1,7 +1,6 @@
 import { useAppDispatch } from "app/store";
-import { useGetPokemonQuery } from "features/api/apiSlice";
-import { battle } from "features/gameState/game";
-import { setPlayer } from "features/gameState/players";
+import { useGetPokemonQuery, useGetRandomPokemonQuery } from "features/api/apiSlice";
+import { choosePlayer } from "features/gameState/gameState";
 import { useState } from "react";
 import classes from "./Controls.module.css";
 
@@ -9,19 +8,20 @@ type SelectPokemonButtonProps = {
   id: string;
 };
 const SelectPokemonButton = ({ id }: SelectPokemonButtonProps) => {
-  const { data: pokemon, isSuccess, isLoading } = useGetPokemonQuery({ id });
+  const { data: player, isSuccess, isLoading } = useGetPokemonQuery({ id });
+  const { data: opponent } = useGetRandomPokemonQuery();
   const dispatch = useAppDispatch();
 
+  const label = isLoading ? "Loading..." : isSuccess ? player.name : "Error";
+  const isDisabled = isLoading || !player || !opponent;
+
   const handleClick = () => {
-    if (!pokemon) return;
-    dispatch(setPlayer(pokemon));
-    dispatch(battle());
+    if (isDisabled) return;
+    dispatch(choosePlayer({ player, opponent }));
   };
 
-  const label = isLoading ? "Loading..." : isSuccess ? pokemon.name : "Error";
-
   return (
-    <button className={classes.selectButton} onClick={handleClick}>
+    <button disabled={isDisabled} className={classes.selectButton} onClick={handleClick}>
       {label}
     </button>
   );
@@ -37,12 +37,13 @@ const getFourRandomIds = () => {
   return ids;
 };
 
-export const IdleControls = () => {
+export const StartControls = () => {
   const [randomIds, setRandomIds] = useState(getFourRandomIds);
 
   const handleRefresh = () => {
     setRandomIds(getFourRandomIds());
   };
+
   return (
     <>
       <div className={classes.selectPokemonGroup}>
