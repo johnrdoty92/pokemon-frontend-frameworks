@@ -8,12 +8,14 @@ export type GameState =
       player: null;
       opponent: null;
       isPlayerTurn: null;
+      message: string;
       mode: "start-screen";
     }
   | {
       player: PlayableCharacter;
       opponent: PlayableCharacter;
       isPlayerTurn: boolean;
+      message: string;
       mode: "battle" | "game-over";
     };
 
@@ -21,6 +23,7 @@ const initialState = {
   player: null,
   opponent: null,
   isPlayerTurn: null,
+  message: "Choose a Pokémon!",
   mode: "start-screen",
 } as const;
 
@@ -38,21 +41,28 @@ export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState
       state.player = { ...player, totalHealth: playerHealth, currentHealth: playerHealth };
       state.opponent = { ...opponent, totalHealth: opponentHealth, currentHealth: opponentHealth };
       state.isPlayerTurn = true;
+      state.message = "Choose an attack!";
     },
     takeTurn: (state, action: PayloadAction<{ target: "player" | "opponent"; move: Move }>) => {
       if (state.mode !== "battle") return state;
       const { target, move } = action.payload;
-      // TODO: add modifiers?
+      // TODO: add modifiers
       state[target].currentHealth -= move.power;
       state.isPlayerTurn = target === "player";
+      state.message = `${state[target].name.replace(/[\w]/i, (match) =>
+        match.toUpperCase()
+      )} used ${move.name}!`;
       if (state[target].currentHealth <= 0) {
         state.mode = "game-over";
       }
+    },
+    updateMessage: (state, action: PayloadAction<string>) => {
+      state.message = action.payload;
     },
     reset: () => initialState,
   },
 });
 
-export const { choosePlayer, takeTurn, reset } = gameStateSlice.actions;
+export const { choosePlayer, takeTurn, updateMessage, reset } = gameStateSlice.actions;
 
 export const gameStateReducer = gameStateSlice.reducer;

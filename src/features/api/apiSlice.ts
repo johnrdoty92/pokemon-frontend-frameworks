@@ -11,7 +11,7 @@ export const apiSlice = createApi({
       query: ({ id }) => `/move/${id}`,
     }),
     getRandomPokemon: builder.query<Pokemon, void>({
-      query: () => `/pokemon/${Math.ceil(Math.random() * 1015)}`,
+      query: () => `/pokemon/${Math.ceil(Math.random() * 251)}`,
     }),
   }),
 });

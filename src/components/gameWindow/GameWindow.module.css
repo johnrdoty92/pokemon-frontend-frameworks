@@ -19,11 +19,13 @@
     display: flex;
     justify-content: space-around;
     min-height: 96px;
+    width: 100%;
 }
 
 .message {
     color: black;
     font-family: monospace;
+    font-size: 1.125rem;
     height: 48px;
     background-color: white;
     border-radius: 5px;

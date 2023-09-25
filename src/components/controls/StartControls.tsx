@@ -30,7 +30,7 @@ const SelectPokemonButton = ({ id }: SelectPokemonButtonProps) => {
 const getFourRandomIds = () => {
   const ids: string[] = [];
   while (ids.length < 4) {
-    const randomId = Math.ceil(Math.random() * 1015).toString();
+    const randomId = Math.ceil(Math.random() * 251).toString();
     if (ids.find((id) => id === randomId)) continue;
     ids.push(randomId);
   }

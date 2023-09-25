@@ -1,5 +1,7 @@
+import { useAppSelector } from "app/store";
 import classes from "./GameWindow.module.css";
 
 export const MessageBox = () => {
-  return <div className={classes.message}>MESSAGE</div>;
+  const message = useAppSelector((state) => state.gameState.message);
+  return <div className={classes.message}>{message}</div>;
 };
