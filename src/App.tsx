@@ -1,18 +1,12 @@
-import classes from "./App.module.css";
+import "./App.css"
 import { Controls } from "components/controls";
-import { Opponent } from "components/opponent";
-import { Player } from "components/player";
+import { GameWindow } from "components/gameWindow";
 
 function App() {
   return (
     <main>
-      <section className={classes.gameWindow}>
-        <Opponent />
-        <Player />
-      </section>
-      <section className={classes.controls}>
-        <Controls />
-      </section>
+      <GameWindow />
+      <Controls />
     </main>
   );
 }

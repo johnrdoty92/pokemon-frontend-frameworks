@@ -1,0 +1,31 @@
+.gameWindow {
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: black;
+    margin-bottom: 1rem;
+    outline: 0.5rem solid black;
+}
+
+.pokemonRows {
+    background-color: rgb(234, 230, 207);
+    border-radius: 5px;
+    outline: 6px solid black;
+}
+
+.pokemonRow {
+    display: flex;
+    justify-content: space-around;
+    min-height: 96px;
+}
+
+.message {
+    color: black;
+    font-family: monospace;
+    height: 48px;
+    background-color: white;
+    border-radius: 5px;
+
+}

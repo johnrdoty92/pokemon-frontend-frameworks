@@ -2,8 +2,9 @@ import { useAppSelector } from "app/store";
 import { StartControls } from "./StartControls";
 import { BattleControls } from "./BattleControls";
 import { GameOverControls } from "./GameOverControls";
+import classes from "./Controls.module.css";
 
-export const Controls = () => {
+const CurrentControls = () => {
   const mode = useAppSelector((state) => state.gameState.mode);
 
   switch (mode) {
@@ -17,4 +18,12 @@ export const Controls = () => {
       return <GameOverControls />;
     }
   }
+};
+
+export const Controls = () => {
+  return (
+    <div className={classes.controls}>
+      <CurrentControls />
+    </div>
+  );
 };

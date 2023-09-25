@@ -1,0 +1,6 @@
+main {
+  width: clamp(200px, 50vw, 75vw);
+  background-color: rgb(17, 133, 79);
+  padding: 1rem;
+  border-radius: 10px;
+}

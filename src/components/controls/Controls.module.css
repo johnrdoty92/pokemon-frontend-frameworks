@@ -1,3 +1,9 @@
+.controls {
+    outline: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
 .selectPokemonGroup {
     display: flex;
     flex-wrap: wrap;
@@ -11,6 +17,7 @@
 .refreshButton {
     margin-top: 1rem;
     width: 100%;
+    background-color: rgb(19, 58, 19);
 }
 
 .battleControls {
