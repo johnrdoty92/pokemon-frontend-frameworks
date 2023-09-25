@@ -46,8 +46,13 @@ export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState
     takeTurn: (state, action: PayloadAction<{ target: "player" | "opponent"; move: Move }>) => {
       if (state.mode !== "battle") return state;
       const { target, move } = action.payload;
-      // TODO: add modifiers
-      state[target].currentHealth -= move.power;
+      const subject = state.isPlayerTurn ? "player" : "opponent";
+      const attack = state[subject].stats.find((s) => s.stat.name === "attack")?.base_stat ?? 0;
+      const defense = state[target].stats.find((s) => s.stat.name === "defense")?.base_stat ?? 0;
+      const damage =
+        ((move.power ? Math.max(move.power + attack - defense, 0) : 0) / 200) *
+        state[target].totalHealth;
+      state[target].currentHealth -= damage;
       state.isPlayerTurn = target === "player";
       if (state[target].currentHealth <= 0) {
         state.mode = "game-over";

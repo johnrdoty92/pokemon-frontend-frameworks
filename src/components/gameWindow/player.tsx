@@ -10,7 +10,7 @@ export const Player = () => {
     const { currentHealth, totalHealth, name } = player;
     return (
       <section className={classes.pokemonRow}>
-        <img src={player.sprites.back_default} alt={name} />;
+        <img src={player.sprites.back_default} alt={name} />
         <Stats name={name} currentHealth={currentHealth} totalHealth={totalHealth} />
       </section>
     );
