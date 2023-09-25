@@ -5,7 +5,7 @@ import { Stats } from "components/stats";
 export const Player = () => {
   const player = useAppSelector((state) => state.gameState.player);
   if (!player) {
-    return <p>Choose a Pokemon...</p>;
+    return <p className={classes.startScreenMessage}>Choose a Pokemon...</p>;
   } else {
     const { currentHealth, totalHealth, name } = player;
     return (

@@ -3,7 +3,7 @@ import { Move, Pokemon } from "features/api/responseTypes";
 
 type PlayableCharacter = Pokemon & { totalHealth: number; currentHealth: number };
 
-type GameState =
+export type GameState =
   | {
       player: null;
       opponent: null;
@@ -14,13 +14,7 @@ type GameState =
       player: PlayableCharacter;
       opponent: PlayableCharacter;
       isPlayerTurn: boolean;
-      mode: "battle";
-    }
-  | {
-      player: null;
-      opponent: null;
-      isPlayerTurn: null;
-      mode: "game-over";
+      mode: "battle" | "game-over";
     };
 
 const initialState = {
@@ -30,8 +24,8 @@ const initialState = {
   mode: "start-screen",
 } as const;
 
-export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState>, "playerState">({
-  name: "playerState",
+export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState>, "gameState">({
+  name: "gameState",
   initialState,
   reducers: {
     choosePlayer: (state, { payload }: PayloadAction<{ player: Pokemon; opponent: Pokemon }>) => {
@@ -51,6 +45,9 @@ export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState
       // TODO: add modifiers?
       state[target].currentHealth -= move.power;
       state.isPlayerTurn = target === "player";
+      if (state[target].currentHealth <= 0) {
+        state.mode = "game-over";
+      }
     },
     reset: () => initialState,
   },

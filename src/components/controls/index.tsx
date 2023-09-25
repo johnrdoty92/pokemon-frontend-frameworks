@@ -1,6 +1,7 @@
 import { useAppSelector } from "app/store";
 import { StartControls } from "./StartControls";
 import { BattleControls } from "./BattleControls";
+import { GameOverControls } from "./GameOverControls";
 
 export const Controls = () => {
   const mode = useAppSelector((state) => state.gameState.mode);
@@ -13,7 +14,7 @@ export const Controls = () => {
       return <BattleControls />;
     }
     case "game-over": {
-      return;
+      return <GameOverControls />;
     }
   }
 };
