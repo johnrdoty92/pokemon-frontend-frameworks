@@ -1,7 +1,6 @@
 import { useAppSelector } from "app/store";
 import { StartControls } from "./StartControls";
 import { BattleControls } from "./BattleControls";
-import { GameOverControls } from "./GameOverControls";
 import classes from "./Controls.module.css";
 
 const CurrentControls = () => {
@@ -11,11 +10,9 @@ const CurrentControls = () => {
     case "start-screen": {
       return <StartControls />;
     }
+    case "game-over":
     case "battle": {
       return <BattleControls />;
-    }
-    case "game-over": {
-      return <GameOverControls />;
     }
   }
 };

@@ -49,9 +49,6 @@ export const gameStateSlice = createSlice<GameState, SliceCaseReducers<GameState
       // TODO: add modifiers
       state[target].currentHealth -= move.power;
       state.isPlayerTurn = target === "player";
-      state.message = `${state[target].name.replace(/[\w]/i, (match) =>
-        match.toUpperCase()
-      )} used ${move.name}!`;
       if (state[target].currentHealth <= 0) {
         state.mode = "game-over";
       }

@@ -17,7 +17,8 @@
 
 .pokemonRow {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-inline: 1rem;
     min-height: 96px;
     width: 100%;
 }
