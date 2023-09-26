@@ -19,9 +19,10 @@ const opponentMiddleware: Middleware<{}, RootState> =
       const move = (await response.json()) as Move;
       setTimeout(() => {
         dispatch(takeTurn({ target: "player", move }));
-      }, 2000);
+      }, 1500);
       setTimeout(() => {
-        dispatch(updateMessage("Choose an attack!"));
+        const isBattleMode = getState().gameState.mode === "battle";
+        if (isBattleMode) dispatch(updateMessage("Choose an attack!"));
       }, 3000);
     }
     next(action);
@@ -38,7 +39,7 @@ const moveMessageMiddleware: Middleware<{}, RootState> =
         action.payload.move.name
       }!`;
       dispatch(updateMessage(message));
-      setTimeout(() => next(action), 200);
+      setTimeout(() => next(action), 500);
     } else {
       next(action);
     }
