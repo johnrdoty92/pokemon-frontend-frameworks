@@ -16,7 +16,7 @@ const MoveButton = ({ id }: { id: string }) => {
   };
 
   return (
-    <button disabled={isDisabled} onClick={handleMove} className={classes.battleButton}>
+    <button disabled={isDisabled} onClick={handleMove} className={classes.optionButton}>
       {move?.name ?? "Loading..."}
     </button>
   );
@@ -37,13 +37,13 @@ export const BattleControls = () => {
     const moves = player.moves.slice(0, 4);
     return (
       <>
-        <div className={classes.battleControls}>
+        <div className={classes.buttonGroup}>
           {moves.map(({ move: { name, url } }) => {
             const [id] = url.split("/").slice(-2, -1);
             return <MoveButton key={name} id={id} />;
           })}
         </div>
-        <button className={classes.refreshButton} onClick={handleReset}>
+        <button className={classes.actionButton} onClick={handleReset}>
           {mode === "game-over" ? "New Battle" : "Reset"}
         </button>
       </>

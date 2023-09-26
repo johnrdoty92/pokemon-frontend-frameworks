@@ -13,6 +13,9 @@
     background-color: rgb(234, 230, 207);
     border-radius: 5px;
     outline: 6px solid black;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .pokemonRow {
@@ -21,6 +24,7 @@
     padding-inline: 1rem;
     min-height: 96px;
     width: 100%;
+    flex-grow: 1;
 }
 
 .message {
@@ -30,5 +34,17 @@
     height: 48px;
     background-color: white;
     border-radius: 5px;
+}
 
+.activeCharacter {
+    animation: bounce 250ms ease infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(5%);
+    }
+    to {
+        transform: translateY(-5%);
+    }
 }

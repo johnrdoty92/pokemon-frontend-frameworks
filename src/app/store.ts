@@ -20,6 +20,9 @@ const opponentMiddleware: Middleware<{}, RootState> =
       setTimeout(() => {
         dispatch(takeTurn({ target: "player", move }));
       }, 2000);
+      setTimeout(() => {
+        dispatch(updateMessage("Choose an attack!"));
+      }, 3000);
     }
     next(action);
   };

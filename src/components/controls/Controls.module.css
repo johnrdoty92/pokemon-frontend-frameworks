@@ -1,30 +1,22 @@
 .controls {
     border-radius: 10px;
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.selectPokemonGroup {
+.buttonGroup {
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     gap: 1em;
 }
 
-.selectButton {
+.optionButton {
     flex: 1 1 calc(50% - 1em);
 }
 
-.refreshButton {
+.actionButton {
     margin-top: 1rem;
     width: 100%;
-    background-color: rgb(19, 58, 19);
-}
-
-.battleControls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-}
-
-.battleButton {
-    flex: 1 1 calc(50% - 1rem);
 }

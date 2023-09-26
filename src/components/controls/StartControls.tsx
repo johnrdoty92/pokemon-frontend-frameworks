@@ -21,7 +21,7 @@ const SelectPokemonButton = ({ id }: SelectPokemonButtonProps) => {
   };
 
   return (
-    <button disabled={isDisabled} className={classes.selectButton} onClick={handleClick}>
+    <button disabled={isDisabled} className={classes.optionButton} onClick={handleClick}>
       {label}
     </button>
   );
@@ -46,12 +46,12 @@ export const StartControls = () => {
 
   return (
     <>
-      <div className={classes.selectPokemonGroup}>
+      <div className={classes.buttonGroup}>
         {randomIds.map((id) => {
           return <SelectPokemonButton key={id} id={id} />;
         })}
       </div>
-      <button className={classes.refreshButton} onClick={handleRefresh}>
+      <button className={classes.actionButton} onClick={handleRefresh}>
         Refresh
       </button>
     </>
